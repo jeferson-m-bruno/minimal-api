@@ -7,6 +7,7 @@ public class MyContext : DbContext
 {
     private readonly IConfiguration _configurationAppSettings;
     public DbSet<Admin> Admins { get; set; } = default!;
+    public DbSet<Vehicle> Vehicles { get; set; } = default!;
 
     public MyContext(IConfiguration configuration)
     {
