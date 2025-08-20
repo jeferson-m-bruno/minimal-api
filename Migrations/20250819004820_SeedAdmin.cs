@@ -13,7 +13,7 @@ namespace minimal_api.Migrations
             migrationBuilder.InsertData(
                 table: "Admins",
                 columns: new[] { "Id", "Email", "Password", "Perfil" },
-                values: new object[] { 1, "administrador", "123456", "ADM" });
+                values: new object[] { 1, "adm@test.com", "123456", "ADM" });
         }
 
         /// <inheritdoc />
