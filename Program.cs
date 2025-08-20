@@ -7,7 +7,10 @@ using MinimalAPI.Infra.DB;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddScoped<IAdminService, AdminService>();
-//builder.Services.AddScoped<DbContext>();
+
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+
 builder.Services.AddDbContext<MyContext>(
     options =>
     {
@@ -19,6 +22,9 @@ builder.Services.AddDbContext<MyContext>(
 );
 
 var app = builder.Build();
+
+app.UseSwagger();
+app.UseSwaggerUI();
 
 app.MapGet("/", () => "Hello World!");
 
