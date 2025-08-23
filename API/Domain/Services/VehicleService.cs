@@ -50,7 +50,7 @@ public class VehicleService : IVehicleService
             query = query.Where(search => EF.Functions.Like(search.Brand.ToLower(), $"%{searchBrand}%"));
         }
 
-        query.Skip(page * byPage).Take(byPage);
+        query = query.Skip(page * byPage).Take(byPage);
         return query.ToList();
     }
 
