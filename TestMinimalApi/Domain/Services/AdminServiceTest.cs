@@ -44,4 +44,26 @@ public class AdminServiceTest
         // Assert
         Assert.Single(administradorServico.GetAll(0));
     }
+    
+    [Fact]
+    public void TestFindId()
+    {
+        // Arrange
+        var context = CreateContextTest();
+        context.Database.ExecuteSqlRaw("TRUNCATE TABLE Admins");
+
+        var adm = new Admin();
+        adm.Email = "teste@teste.com";
+        adm.Password = "teste";
+        adm.Perfil = "Adm";
+
+        var administradorServico = new AdminService(context);
+
+        // Act
+        administradorServico.Insert(adm);
+        var admDoBanco = administradorServico.GetById(adm.Id);
+
+        // Assert
+        Assert.Equal(1, admDoBanco?.Id);
+    }
 }
